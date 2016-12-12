@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @garage.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @garage.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @garage.phone %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @garage.website %>
+</p>
+
+<%= link_to 'Edit', edit_garage_path(@garage) %> |
+<%= link_to 'Back', garages_path %>
