@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @garage.image_url %>
+
 <p>
   <strong>Name:</strong>
   <%= @garage.name %>
@@ -17,7 +19,7 @@
 
 <p>
   <strong>Website:</strong>
-  <%= @garage.website %>
+  <%= link_to @garage.website, @garage.website %>
 </p>
 
 <%= link_to 'Edit', edit_garage_path(@garage) %> |

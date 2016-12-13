@@ -1,4 +1,4 @@
-<%= form_for(garage) do |f| %>
+<%= form_for(garage, html: { multipart: true }) do |f| %>
   <% if garage.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(garage.errors.count, "error") %> prohibited this garage from being saved:</h2>
@@ -28,7 +28,12 @@
 
   <div class="form-group">
     <%= f.label :website %>
-    <%= f.text_field :website, class: "form-control", type: "url" %>
+    <%= f.text_field :website, class: "form-control", type: "url", value: "http://" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control", type: "file" %>
   </div>
 
 
