@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.5'
 # Image upload
 gem 'carrierwave'
 gem "fog-aws"
+# Image resize
+gem "mini_magick"
 # Protect sensitive configuration values
 gem "figaro"
 
