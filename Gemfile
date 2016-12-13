@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Image upload
 gem 'carrierwave'
+gem "fog-aws"
+# Protect sensitive configuration values
+gem "figaro"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
