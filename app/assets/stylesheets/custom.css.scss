@@ -1,0 +1,41 @@
+.jumbotron{
+	background-color: #FEF7E4 !important;
+	border: 1px solid #E6DA7A;
+	h2{
+		color: #B91B2B;
+		font-weight: bold;
+	}
+}
+
+.navbar{
+	background-color: #AA0005;
+	.nav-link{
+		color: #fff !important;
+		font-weight: bold !important;
+	}
+	.btn-outline-success{
+		color: #fff;
+    border-color: #fff;
+    &:hover{
+			color: #AA0005;
+	    background-color: #fff;
+	    border-color: #AA0005;
+		}
+	}
+	.navbar-brand{
+		font-weight: bold;
+		font-family: 'Hobo Std';
+		text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff
+	}
+}
+
+.container-fluid{
+	padding: 10px 120px !important;
+}
+
+#garages-footer{
+	width: 100%;
+	height: 600px;
+	background: url("https://s3-us-west-2.amazonaws.com/garage-review-images/garage.jpg") center center no-repeat;
+	background-size: cover;
+}
