@@ -9,9 +9,26 @@
         <%= link_to "Contact", pages_contact_path, class: "nav-link" %>
       </li>
     </ul>
-    <form class="form-inline float-xs-right">
+    <form class="form-inline float-xs-left">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+    <ul class="nav navbar-nav float-xs-right">
+      <% unless user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </nav>
