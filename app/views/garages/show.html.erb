@@ -20,5 +20,6 @@
   <%= link_to @garage.website, @garage.website %>
 </p>
 
+<%= link_to "Write a Review", new_garage_review_path(@garage), class: "btn btn-primary" %>
 <%= link_to 'Edit', edit_garage_path(@garage) %> |
 <%= link_to 'Back', garages_path %>
