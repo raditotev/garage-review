@@ -24,7 +24,7 @@
   <div class="col-md-8">
     <% if @reviews.any? %>
       <% @reviews.each do |review| %>
-        <p><%= review.rating %></p>
+        <div class="star-rating" data-score= <%= review.rating %>></div>
         <p><%= review.comment %></p>
       <% end %>
     <% else %>
@@ -32,3 +32,13 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $('.star-rating').raty({
+    path: 'https://s3-us-west-2.amazonaws.com/garage-review-images/raty-images',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
