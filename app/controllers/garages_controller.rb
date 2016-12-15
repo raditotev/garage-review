@@ -10,6 +10,7 @@ class GaragesController < ApplicationController
   # GET /garages/1
   # GET /garages/1.json
   def show
+    @reviews = Review.where(garage_id: @garage.id)
   end
 
   # GET /garages/new

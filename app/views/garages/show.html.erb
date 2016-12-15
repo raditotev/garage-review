@@ -1,25 +1,34 @@
-<%= image_tag @garage.image_url %>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @garage.image_url %>
+    <h2>
+      <%= @garage.name %>
+    </h2>
+    <p>
+      <strong>Address:</strong>
+      <%= @garage.address %>
+    </p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @garage.phone %>
+    </p>
+    <p>
+      <strong>Website:</strong>
+      <%= link_to @garage.website, @garage.website %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @garage.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @garage.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @garage.phone %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= link_to @garage.website, @garage.website %>
-</p>
-
-<%= link_to "Write a Review", new_garage_review_path(@garage), class: "btn btn-primary" %>
-<%= link_to 'Edit', edit_garage_path(@garage) %> |
-<%= link_to 'Back', garages_path %>
+    <%= link_to "Write a Review", new_garage_review_path(@garage), class: "btn btn-primary" %>
+    <%= link_to 'Edit', edit_garage_path(@garage) %> |
+    <%= link_to 'Back', garages_path %>
+  </div>
+  <div class="col-md-8">
+    <% if @reviews.any? %>
+      <% @reviews.each do |review| %>
+        <p><%= review.rating %></p>
+        <p><%= review.comment %></p>
+      <% end %>
+    <% else %>
+      <h3>There are no reviews yet. Be the first to leave one!</h3>
+    <% end %>
+  </div>
+</div>
