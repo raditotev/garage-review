@@ -10,7 +10,12 @@ class GaragesController < ApplicationController
   # GET /garages/1
   # GET /garages/1.json
   def show
-    @reviews = Review.where(garage_id: @garage.id)
+    @reviews = Review.where(garage_id: @garage.id).order(created_at: :desc)
+    if @reviews.empty?
+      @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(0)
+    end
   end
 
   # GET /garages/new
