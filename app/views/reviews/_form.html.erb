@@ -1,8 +1,10 @@
 <%= form_for([@garage, @review]) do |f| %>
   <% if review.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
       <ul>
       <% review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
