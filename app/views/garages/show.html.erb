@@ -25,18 +25,26 @@
   </div>
   <div class="col-md-8">
     <% if @reviews.any? %>
-      <% @reviews.each do |review| %>
         <table class="table">
           <tbody>
-            <tr>
-              <td>
-                <div class="star-rating" data-score= <%= review.rating %>></div>
-                <p><%= h(review.comment).gsub(/\n/, '<br>').html_safe %></p>
-              </td>
-            </tr>
+            <% @reviews.each do |review| %>
+              <tr>
+                <td class="col-md-3">
+                  <h4>
+                    <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}" %>
+                  </h4>
+                  <p>
+                    <%= review.created_at.strftime("%d %b %Y") %>
+                  </p>
+                </td>
+                <td class="col-md-9">
+                  <div class="star-rating" data-score= <%= review.rating %>></div>
+                  <p><%= h(review.comment).gsub(/\n/, '<br>').html_safe %></p>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
-      <% end %>
     <% else %>
       <h3>There are no reviews yet. Be the first to leave one!</h3>
     <% end %>
