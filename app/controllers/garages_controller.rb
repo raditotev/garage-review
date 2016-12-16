@@ -1,5 +1,7 @@
 class GaragesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_garage, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /garages
   # GET /garages.json
@@ -71,6 +73,12 @@ class GaragesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_garage
       @garage = Garage.find(params[:id])
+    end
+
+    def check_user
+      unless current_user.admin?
+        redirect_to root_url, alert: "Restricted access"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

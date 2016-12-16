@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :set_garage
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /reviews/new
   def new
@@ -35,7 +36,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to root_url, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @garage, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -67,5 +68,11 @@ class ReviewsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
       params.require(:review).permit(:rating, :comment)
+    end
+
+    def check_user
+      unless (@review.user == current_user) or (current_user.admin?)
+        redirect_to root_url, alert: "You're not authorized to modify this review."
+      end
     end
 end
