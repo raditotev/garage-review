@@ -20,8 +20,20 @@
     </p>
 
     <%= link_to "Write a Review", new_garage_review_path(@garage), class: "btn btn-primary" %>
-    <%= link_to 'Edit', edit_garage_path(@garage) %> |
-    <%= link_to 'Back', garages_path %>
+
+    <br>
+    <br>
+    <iframe
+      width="300"
+      height="200"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['google_maps_api'] %>
+        &q=<%= @garage.address.parameterize %>&zoom=14" allowfullscreen>
+    </iframe>
+
+
+
+
   </div>
   <div class="col-md-8">
     <% if @reviews.any? %>
