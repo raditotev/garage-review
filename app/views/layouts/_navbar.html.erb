@@ -9,10 +9,12 @@
         <%= link_to "Contact", pages_contact_path, class: "nav-link" %>
       </li>
     </ul>
-    <form class="form-inline float-xs-left">
-      <input class="form-control" type="text" placeholder="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    <%= form_tag search_garages_path, method: :get, class: "form-inline float-xs-left" do  %>
+      <p>
+        <%= text_field_tag :search, params[:search], class: "form-control" %>
+        <%= submit_tag "Search", name: nil, class: "btn btn-outline-success" %>
+      </p>
+    <% end %>
     <ul class="nav navbar-nav float-xs-right">
       <% unless user_signed_in? %>
         <li class="nav-item">

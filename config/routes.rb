@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   root 'garages#index'
   resources :garages do
+    collection do
+      get 'search'
+    end
     resources :reviews, except: [:index, :show]
   end
 

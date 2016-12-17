@@ -1,6 +1,8 @@
 class Garage < ApplicationRecord
   mount_uploader :image, ImageUploader
 
+  searchkick
+
   has_many :reviews, dependent: :destroy
 
   validates :name, :address, :phone, :website, :image, presence: true

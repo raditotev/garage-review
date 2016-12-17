@@ -1,7 +1,15 @@
 class GaragesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_garage, only: [:show, :edit, :update, :destroy]
-  before_action :check_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_user, except: [:index, :show, :search]
+
+  def search
+    if params[:search].present?
+      @garages = Garage.search(params[:search])
+    else
+      @garages = Garage.all
+    end
+  end
 
   # GET /garages
   # GET /garages.json
